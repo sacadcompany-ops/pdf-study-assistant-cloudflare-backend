@@ -1,0 +1,29 @@
+name = "pdf-study-assistant-cloudflare-backend"
+main = "src/index.ts"
+compatibility_date = "2025-01-15"
+
+# Bind your Cloudflare D1 database
+# Create with: npx wrangler d1 create pdf_study_db
+[[d1_databases]]
+binding = "DB"
+database_name = "pdf_study_db"
+database_id = "0e123535-cd5a-49b8-9e95-3a0a2d19fda8"
+migrations_dir = "migrations"
+
+# Bind your Cloudflare R2 bucket
+# Create with: npx wrangler r2 bucket create pdf-study-files
+[[r2_buckets]]
+binding = "R2_BUCKET"
+bucket_name = "pdf-study-files"
+
+[vars]
+APP_NAME = "PDF Study Assistant API"
+MIN_SMART_THRESHOLD = "0.35"
+MIN_EXACT_THRESHOLD = "0.30"
+MAX_UPLOAD_BYTES = "52428800"
+RATE_LIMIT_REQUESTS = "120"
+RATE_LIMIT_WINDOW_SECONDS = "60"
+
+# Configure secrets via Wrangler (never commit real secrets):
+#   npx wrangler secret put JWT_SECRET
+#   npx wrangler secret put ADMIN_INVITE_CODE

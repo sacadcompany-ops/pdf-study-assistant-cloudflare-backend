@@ -1,0 +1,23 @@
+{
+  "name": "pdf-study-assistant-cloudflare-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "No-AI PDF Study Assistant backend on Cloudflare Workers, D1, and R2",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "db:migrate:local": "wrangler d1 migrations apply pdf_study_db --local",
+    "db:migrate:remote": "wrangler d1 migrations apply pdf_study_db --remote"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250129.0",
+    "typescript": "^5.7.3",
+    "wrangler": "^3.105.0"
+  },
+  "allowScripts": {
+    "esbuild@0.17.19": true,
+    "sharp@0.33.5": true,
+    "workerd@1.20250718.0": true
+  }
+}
